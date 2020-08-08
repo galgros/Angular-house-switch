@@ -1,0 +1,20 @@
+<h2>{{ devicesTitle }}</h2>
+
+<div class="col-md-10 offset-md-1">
+  <small>Mis à jour le : {{ updatedAt | date: "dd/MM/y" }}</small>
+  <ul>
+    <li class="list-group-item" *ngFor="let device of devices; let i = index" [ngClass]="getClass(device.status)">
+      <h4 [ngStyle]="{color: getColor(device.status)}">Appareil : {{ device.name | titlecase }} -- Status : {{ device.status | titlecase }}</h4>
+      <button class="btn btn-danger" (click)="onSwitchOff(i)">Off</button>
+      <button class="btn btn-success" (click)="onSwitchOn(i)">On</button>
+      <input type="text" class="form-control" [(ngModel)]="device.name">
+    </li>
+  </ul>
+
+  <button class="btn btn-success"
+          (click)="onToutAllumer()"
+          [disabled]="">Tout allumer</button>
+  <button class="btn btn-danger"
+          (click)="onToutEteindre()"
+          [disabled]="">Tout éteindre</button>
+</div>
