@@ -13,3 +13,13 @@
 .btn-mode {
   margin-left: auto;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+.navbar {
+  height: 10vh;
+}
