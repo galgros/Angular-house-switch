@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, interval} from "rxjs";
+import {AuthGardService} from "./services/auth-gard.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,10 @@ export class AppComponent implements OnInit{
   darkMode = false;
   secondes: number;
 
+  constructor(private authGard: AuthGardService, private router: Router) {
+
+  }
+
   ngOnInit() {
     const counter = interval(1000);
     counter.subscribe(
@@ -18,6 +24,12 @@ export class AppComponent implements OnInit{
         this.secondes = value;
       }
     )
+  }
+
+  onLogout() {
+    this.authGard.isAuth = false;
+    this.authGard.user= "";
+    this.router.navigate(['/app-login'])
   }
 
   onDarkMode() {
@@ -42,5 +54,13 @@ export class AppComponent implements OnInit{
         }
         return 'lightmode';
     }
+  }
+
+  getUser() {
+    return this.authGard.user
+  }
+
+  getAuth() {
+    return this.authGard.isAuth
   }
 }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg" [ngClass]="isDarkMode('nav')">
-  <a class="navbar-brand" routerLink="/">{{ title }}</a>
+  <a class="navbar-brand" routerLink="/app-mes-appareils">{{ title }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,8 +17,9 @@
 <main class="main" [ngClass]="isDarkMode('main')">
   <router-outlet></router-outlet>
   <footer>
-    <p style="text-align: center">
-      Vous êtes connecté depuis {{ secondes }} secondes !
+    <p *ngIf="getAuth()" style="text-align: center">
+      {{ getUser() | titlecase }}, vous êtes connecté depuis {{ secondes }} secondes !
     </p>
+    <button *ngIf="getAuth()" type="button" (click)="onLogout()" class="btn btn-dark">Déconnexion</button>
   </footer>
 </main>

@@ -5,13 +5,16 @@ import { MesAppareilsComponent } from "./mes-appareils/mes-appareils.component";
 import {EditDeviceComponent} from "./mes-appareils/edit-device/edit-device.component";
 import {FourOFourComponent} from "./four-o-four/four-o-four.component";
 import {SingleDeviceComponent} from "./single-device/single-device.component";
+import {AuthGardService} from "./services/auth-gard.service";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
-  { path: 'app-new-device', component: NewDeviceComponent },
-  { path: 'app-mes-appareils', component: MesAppareilsComponent },
-  { path: 'app-single-device/:id', component: SingleDeviceComponent },
-  { path: 'app-edit-device', component: EditDeviceComponent },
-  { path: '', component: MesAppareilsComponent },
+  { path: 'app-new-device', canActivate: [AuthGardService], component: NewDeviceComponent },
+  { path: 'app-mes-appareils', canActivate: [AuthGardService], component: MesAppareilsComponent },
+  { path: 'app-single-device/:id', canActivate: [AuthGardService], component: SingleDeviceComponent },
+  { path: 'app-edit-device', canActivate: [AuthGardService], component: EditDeviceComponent },
+  { path: 'app-login', component: LoginComponent},
+  { path: '', component: LoginComponent },
   { path: '**', component: FourOFourComponent },
 ];
 
