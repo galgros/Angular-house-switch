@@ -1,7 +1,7 @@
 <button class="btn btn-info" routerLink="/" routerLinkActive="active">Retour à la liste</button>
 <div class="device-container">
   <h2>{{ deviceName | titlecase }}</h2>
-  <p [ngStyle]="{color: getColor(deviceStatus)}">{{ deviceStatus | titlecase }}</p>
+  <p [ngStyle]="{color: getColor(deviceStatus)}"><strong>{{ deviceStatus | titlecase }}</strong></p>
   <button *ngIf="deviceStatus === 'éteint'" class="btn btn-success" (click)="onSwitch()" [disabled]="deviceStatus !== 'éteint'">On</button>
   <button *ngIf="deviceStatus !== 'éteint'" class="btn btn-danger" (click)="onSwitch()" [disabled]="deviceStatus === 'éteint'">Off</button>
   <div>

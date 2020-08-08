@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
-import {DeviceService} from "./services/device.service";
-import {element} from "protractor";
+import {Component, OnInit} from '@angular/core';
+import {Observable, interval} from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'G-App';
   darkMode = false;
+  secondes: number;
+
+  ngOnInit() {
+    const counter = interval(1000);
+    counter.subscribe(
+      (value: number) => {
+        this.secondes = value;
+      }
+    )
+  }
 
   onDarkMode() {
     if (this.darkMode === false) {

@@ -16,4 +16,9 @@
 </nav>
 <main class="main" [ngClass]="isDarkMode('main')">
   <router-outlet></router-outlet>
+  <footer>
+    <p style="text-align: center">
+      Vous êtes connecté depuis {{ secondes }} secondes !
+    </p>
+  </footer>
 </main>
