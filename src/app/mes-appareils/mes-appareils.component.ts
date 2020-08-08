@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {DeviceService} from "../services/device.service";
+import {EditDeviceComponent} from "./edit-device/edit-device.component";
 
 @Component({
   selector: 'app-mes-appareils',
   templateUrl: './mes-appareils.component.html',
-  styleUrls: ['./mes-appareils.component.sass']
+  styleUrls: ['./mes-appareils.component.scss']
 })
 export class MesAppareilsComponent implements OnInit {
 
   devicesTitle = 'Mes Appareils';
-
   updatedAt = new Promise(
     (resolve, reject) => {
       const date = new Date();
@@ -31,7 +31,7 @@ export class MesAppareilsComponent implements OnInit {
 
   getColor(device) {
     if (device === 'éteint') {
-      return "red";
+      return "#1b1e21";
     } else {
       return 'green';
     }
@@ -39,7 +39,7 @@ export class MesAppareilsComponent implements OnInit {
 
   getClass(device) {
     if (device === 'éteint') {
-      return "list-group-item-danger";
+      return "list-group-item-dark";
     } else {
       return 'list-group-item-success';
     }
@@ -79,5 +79,4 @@ export class MesAppareilsComponent implements OnInit {
     }
     return true;
   }
-
 }

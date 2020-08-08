@@ -1,0 +1,22 @@
+li {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin: auto 0;
+  }
+
+  button {
+    margin: 0 5px;
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin: 10px;
+  }
+}

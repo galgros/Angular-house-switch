@@ -7,7 +7,7 @@ export class DeviceService {
 
   onToutAllumer() {
     for (let device of this.devices) {
-      device.status = 'allumer';
+      device.status = 'allumé';
     }
     return this.devices;
   }
@@ -20,10 +20,10 @@ export class DeviceService {
   }
 
   onSwitch(index) {
-    if (this.devices[index].status === 'allumer') {
+    if (this.devices[index].status === 'allumé') {
       this.devices[index].status = 'éteint'
     } else {
-      this.devices[index].status = 'allumer'
+      this.devices[index].status = 'allumé'
     }
     return this.devices;
   }

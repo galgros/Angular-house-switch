@@ -1,22 +1,25 @@
-<h2>{{ devicesTitle }}</h2>
+<h2>{{ devicesTitle }} <button type="button" class="btn btn-info" routerLink="/app-new-device" routerLinkActive="active">Ajouter un appareil</button></h2>
 
 <div class="col-md-10 offset-md-1">
   <small>Mis à jour le : {{ updatedAt | async | date: "dd/MM/y" }} à {{ updatedAt | async | date: "hh:mm"}}</small>
   <ul>
     <li class="list-group-item" *ngFor="let device of devices; let i = index" [ngClass]="getClass(device.status)">
       <p [ngStyle]="{color: getColor(device.status)}">
-        {{ device.name | titlecase }} -- Status : {{ device.status | titlecase }}
+        {{ device.name | titlecase }} -- {{ device.status | titlecase }}
       </p>
-      <button *ngIf="!isDisabled(i)" class="btn btn-success" (click)="onSwitch(i)" [disabled]="isDisabled(i)">On</button>
-      <button *ngIf="isDisabled(i)" class="btn btn-danger" (click)="onSwitch(i)" [disabled]="!isDisabled(i)">Off</button>
-      <input type="hidden" class="form-control" [(ngModel)]="device.name">
+      <div>
+        <button *ngIf="!isDisabled(i)" class="btn btn-success" (click)="onSwitch(i)" [disabled]="isDisabled(i)">On</button>
+        <button *ngIf="isDisabled(i)" class="btn btn-danger" (click)="onSwitch(i)" [disabled]="!isDisabled(i)">Off</button>
+        <button class="btn btn-info" type="button" routerLink="/app-edit-device">Edit</button>
+      </div>
     </li>
   </ul>
-
-  <button class="btn btn-success"
-          (click)="onToutAllumer()"
-          [disabled]="">Tout allumer</button>
-  <button class="btn btn-danger"
-          (click)="onToutEteindre()"
-          [disabled]="">Tout éteindre</button>
+  <div class="btn-container">
+    <button class="btn btn-success"
+            (click)="onToutAllumer()"
+            [disabled]="">Tout allumer</button>
+    <button class="btn btn-danger"
+            (click)="onToutEteindre()"
+            [disabled]="">Tout éteindre</button>
+  </div>
 </div>

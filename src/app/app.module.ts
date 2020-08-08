@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MesAppareilsComponent } from './mes-appareils/mes-appareils.component';
 import { DeviceService} from "./services/device.service";
+import { NewDeviceComponent } from './new-device/new-device.component';
+import {EditDeviceComponent} from "./mes-appareils/edit-device/edit-device.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    MesAppareilsComponent
+    MesAppareilsComponent,
+    EditDeviceComponent,
+    NewDeviceComponent
   ],
   imports: [
     BrowserModule,
