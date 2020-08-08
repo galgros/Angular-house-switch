@@ -8,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class MesAppareilsComponent implements OnInit {
 
   devicesTitle = 'Mes Appareils';
-  updatedAt = new Date();
+  updatedAt = new Promise(
+    (resolve, reject) => {
+      const date = new Date();
+      setTimeout(
+        () => {
+          resolve(date);
+        }, 2000
+      );
+    }
+  );
 
   devices = [
     {name: 'grille pain', status: 'éteint'},
@@ -37,24 +46,48 @@ export class MesAppareilsComponent implements OnInit {
     }
   }
 
+  onUpdate() {
+    this.updatedAt = new Promise(
+      (resolve, reject) => {
+        const date = new Date();
+        setTimeout(
+          () => {
+            resolve(date);
+          }, 1000
+        );
+      }
+    );
+  }
+
   onToutAllumer() {
     for (let device of this.devices) {
       device.status = 'allumer';
+      this.onUpdate();
     }
   }
 
   onToutEteindre() {
     for (let device of this.devices) {
       device.status = 'éteint';
+      this.onUpdate();
     }
   }
 
   onSwitchOn(index) {
     this.devices[index].status = 'allumer';
+    this.onUpdate();
   }
 
   onSwitchOff(index) {
     this.devices[index].status = 'éteint';
+    this.onUpdate();
+  }
+
+  isDisabled(index) {
+    if (this.devices[index].status === 'éteint') {
+      return false;
+    }
+    return true;
   }
 
 }
