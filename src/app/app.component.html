@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" [ngClass]="isDarkMode('nav')">
   <a class="navbar-brand" href="#">{{ title }}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+          aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -12,7 +13,10 @@
         <a class="nav-link" href="#">Features</a>
       </li>
     </ul>
+    <button *ngIf="!darkMode" class="btn btn-dark" type="button" (click)="onDarkMode()">DarkMode</button>
+    <button *ngIf="darkMode" class="btn btn-light" type="button" (click)="onDarkMode()">LightMode</button>
   </div>
 </nav>
-
-<app-mes-appareils></app-mes-appareils>
+<main class="main" [ngClass]="isDarkMode('main')">
+  <app-mes-appareils></app-mes-appareils>
+</main>

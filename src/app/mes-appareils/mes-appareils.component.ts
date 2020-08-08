@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DeviceService} from "../services/device.service";
 
 @Component({
   selector: 'app-mes-appareils',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MesAppareilsComponent implements OnInit {
 
   devicesTitle = 'Mes Appareils';
+
   updatedAt = new Promise(
     (resolve, reject) => {
       const date = new Date();
@@ -19,15 +21,12 @@ export class MesAppareilsComponent implements OnInit {
     }
   );
 
-  devices = [
-    {name: 'grille pain', status: 'éteint'},
-    {name: 'télévision', status: 'éteint'},
-    {name: 'four', status: 'éteint'},
-  ];
+  devices = [];
 
-  constructor() { }
+  constructor(private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+    this.devices = this.deviceService.devices
   }
 
   getColor(device) {
@@ -60,26 +59,17 @@ export class MesAppareilsComponent implements OnInit {
   }
 
   onToutAllumer() {
-    for (let device of this.devices) {
-      device.status = 'allumer';
-      this.onUpdate();
-    }
-  }
-
-  onToutEteindre() {
-    for (let device of this.devices) {
-      device.status = 'éteint';
-      this.onUpdate();
-    }
-  }
-
-  onSwitchOn(index) {
-    this.devices[index].status = 'allumer';
+    this.devices = this.deviceService.onToutAllumer()
     this.onUpdate();
   }
 
-  onSwitchOff(index) {
-    this.devices[index].status = 'éteint';
+  onToutEteindre() {
+    this.devices = this.deviceService.onToutEteindre()
+    this.onUpdate();
+  }
+
+  onSwitch(index) {
+    this.devices = this.deviceService.onSwitch(index)
     this.onUpdate();
   }
 
