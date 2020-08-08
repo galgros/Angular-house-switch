@@ -1,7 +1,7 @@
 <h2>{{ devicesTitle }} <button type="button" class="btn btn-info" routerLink="/app-new-device" routerLinkActive="active">Ajouter un appareil</button></h2>
 
 <div class="col-md-10 offset-md-1">
-  <small>Mis à jour le : {{ updatedAt | async | date: "dd/MM/y" }} à {{ updatedAt | async | date: "hh:mm"}}</small>
+  <small>Mis à jour le : {{ updatedAt | async | date: "dd/MM/y" }} à {{ updatedAt | async | date: "HH:mm"}}</small>
   <ul>
     <li class="list-group-item" *ngFor="let device of devices; let i = index" [ngClass]="getClass(device.status)">
       <p [ngStyle]="{color: getColor(device.status)}">
@@ -10,7 +10,7 @@
       <div>
         <button *ngIf="!isDisabled(i)" class="btn btn-success" (click)="onSwitch(i)" [disabled]="isDisabled(i)">On</button>
         <button *ngIf="isDisabled(i)" class="btn btn-danger" (click)="onSwitch(i)" [disabled]="!isDisabled(i)">Off</button>
-        <button class="btn btn-info" type="button" routerLink="/app-edit-device">Edit</button>
+        <button class="btn btn-info" type="button" routerLink="/app-single-device/{{ device.id }}">Détails</button>
       </div>
     </li>
   </ul>

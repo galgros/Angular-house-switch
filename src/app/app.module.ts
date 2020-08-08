@@ -8,13 +8,17 @@ import { MesAppareilsComponent } from './mes-appareils/mes-appareils.component';
 import { DeviceService} from "./services/device.service";
 import { NewDeviceComponent } from './new-device/new-device.component';
 import {EditDeviceComponent} from "./mes-appareils/edit-device/edit-device.component";
+import { FourOFourComponent } from './four-o-four/four-o-four.component';
+import { SingleDeviceComponent } from './single-device/single-device.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MesAppareilsComponent,
     EditDeviceComponent,
-    NewDeviceComponent
+    NewDeviceComponent,
+    FourOFourComponent,
+    SingleDeviceComponent
   ],
   imports: [
     BrowserModule,

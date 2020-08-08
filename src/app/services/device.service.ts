@@ -1,8 +1,9 @@
 export class DeviceService {
   devices = [
-    {name: 'grille pain', status: 'éteint'},
-    {name: 'télévision', status: 'éteint'},
-    {name: 'four', status: 'éteint'},
+    {id: 1, name: 'grille pain', status: 'éteint'},
+    {id: 2, name: 'télévision', status: 'éteint'},
+    {id: 3, name: 'four', status: 'éteint'},
+    {id: 4, name: 'google home', status: 'éteint'},
   ];
 
   onToutAllumer() {
@@ -26,5 +27,14 @@ export class DeviceService {
       this.devices[index].status = 'allumé'
     }
     return this.devices;
+  }
+
+  getDeviceById(id: number) {
+    const device = this.devices.find(
+      (deviceObject) => {
+        return deviceObject.id === id;
+      }
+    );
+    return device;
   }
 }

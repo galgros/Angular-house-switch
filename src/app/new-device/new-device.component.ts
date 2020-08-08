@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DeviceService} from "../services/device.service";
+import {count} from "rxjs/operators";
 
 @Component({
   selector: 'app-new-device',
@@ -16,7 +17,7 @@ export class NewDeviceComponent implements OnInit {
   }
 
   onSubmit() {
-    return this.deviceService.devices.push({name: this.newDevice, status: 'éteint'})
+    return this.deviceService.devices.push({id: this.deviceService.devices.length + 1,name: this.newDevice, status: 'éteint'})
   }
 
 }

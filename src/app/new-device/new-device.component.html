@@ -1,5 +1,6 @@
 <button class="btn btn-info" routerLink="/" routerLinkActive="active">Retour à la liste</button>
+<h2>Nouvel Appareil</h2>
 <div>
-  <input type="text" class="form-control col-md-6 offset-md-3" [(ngModel)]="newDevice">
+  <input type="text" class="form-control col-md-6 offset-md-3" [(ngModel)]="newDevice" placeholder="Nom de l'appareil">
   <button class="btn btn-info" (click)="onSubmit()" routerLink="/" routerLinkActive="active">Ajouter</button>
 </div>
